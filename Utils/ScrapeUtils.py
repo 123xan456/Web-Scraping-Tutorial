@@ -7,10 +7,10 @@ from bs4 import BeautifulSoup
 import ddddocr, base64, cv2, os
 import pandas as pd
 
-info = pd.read_excel("info.xlsx", index_col="ID", dtype=str)
+info = pd.read_excel("../Res/info.xlsx", index_col="ID", dtype=str)
 options = Options()
 options.headless = True
-checkpoint = open("ckpt.txt", "r+")
+checkpoint = open("../Res/ckpt.txt", "r+")
 
 
 def ocr_captcha_ddddocr(image):
@@ -54,5 +54,5 @@ def enter_IC(IC_no):
             data[17].text,
         ]
 
-    info.to_excel("info.xlsx")
+    info.to_excel("../Res/info.xlsx")
     driver.close()

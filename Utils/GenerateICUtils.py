@@ -1,5 +1,4 @@
-from random import randint as rand
-from ScrapeUtils import enter_IC
+from Utils.ScrapeUtils import enter_IC
 
 """
 Generate possible Malaysian IC numbers. Split by dd-mm-yy-pb-lastfour 
@@ -31,7 +30,7 @@ def generate_IC(ckpt):
 
             dd = f"{day:02d}"
 
-            for year in range(75, 99):  # 1975-1999
+            for year in range(ckpt_yy, 99):  # 1975-1999
 
                 yymmdd = str(year) + mm + dd
 
@@ -50,10 +49,10 @@ def generate_IC(ckpt):
 
                         IC = yymmdd + pb + lf
                         enter_IC(IC)
-                        with open("ckpt.txt", "w") as checkpoint:
+                        with open("../Res/ckpt.txt", "w") as checkpoint:
                             checkpoint.write(IC)
 
-            for year in range(0, 6):  # 2000-2006
+            for year in range(ckpt_yy, 6):  # 2000-2006
 
                 dd = f"{year:02d}"
 
@@ -74,5 +73,5 @@ def generate_IC(ckpt):
 
                         IC = yymmdd + pb + lf
                         enter_IC(IC)
-                        with open("ckpt.txt", "w") as checkpoint:
+                        with open("../Res/ckpt.txt", "w") as checkpoint:
                             checkpoint.write(IC)
