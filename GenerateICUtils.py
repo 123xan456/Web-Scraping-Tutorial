@@ -31,7 +31,7 @@ def generate_IC(ckpt):
 
             dd = f"{day:02d}"
 
-            for year in range(75, 99):
+            for year in range(75, 99):  # 1975-1999
 
                 yymmdd = str(year) + mm + dd
 
@@ -53,7 +53,7 @@ def generate_IC(ckpt):
                         with open("ckpt.txt", "w") as checkpoint:
                             checkpoint.write(IC)
 
-            for year in range(0, 6):
+            for year in range(0, 6):  # 2000-2006
 
                 dd = f"{year:02d}"
 

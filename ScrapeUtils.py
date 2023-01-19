@@ -33,7 +33,7 @@ def enter_IC(IC_no):
     # input IC
     driver.find_element(By.NAME, "NoKp").send_keys(IC_no)
 
-    # extract CAPTCHA
+    # extract CAPTCHA and submit
     driver.find_element(By.NAME, "captcha").send_keys(ocr_captcha_ddddocr("ss.png"))
     driver.find_element(By.XPATH, "//input[@type='submit' and @value='Semak']").click()
 
@@ -41,6 +41,7 @@ def enter_IC(IC_no):
     data = soup.find_all("td")
 
     if data:
+        # data comes as a list [header1,data1,header2,data2... and so on]. Lazy so i just take every second piece of info
         info.loc[len(info.index)] = [
             data[1].text,
             data[3].text,
