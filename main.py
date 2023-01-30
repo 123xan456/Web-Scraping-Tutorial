@@ -1,4 +1,4 @@
-from Utils.GenerateICUtils import generate_IC
+from GenerateICUtils import generate_IC
 
 checkpoint = open("Res/ckpt.txt", "r+")
 ckpt = checkpoint.read()
