@@ -30,33 +30,33 @@ def generate_IC(ckpt):
 
             dd = f"{day:02d}"
 
-            for year in range(ckpt_yy, 99):  # 1975-1999
+            # for year in range(ckpt_yy, 99):  # 1975-1999
 
-                yymmdd = str(year) + mm + dd
+            #     yymmdd = str(year) + mm + dd
 
-                # next 2, labeled as PB(place of birth), numbers 17-20 not included
-                for PB in range(ckpt_pb, 60):
+            #     # next 2, labeled as PB(place of birth), numbers 17-20 not included
+            #     for PB in range(ckpt_pb, 60):
 
-                    non_PB = [17, 18, 19, 20]
-                    if PB in non_PB:
-                        continue
+            #         non_PB = [17, 18, 19, 20]
+            #         if PB in non_PB:
+            #             continue
 
-                    pb = f"{PB:02d}"
+            #         pb = f"{PB:02d}"
 
-                    # last 4
-                    for lfour in range(ckpt_lf, 10000):
-                        lf = f"{lfour:04d}"
+            #         # last 4
+            #         for lfour in range(ckpt_lf, 10000):
+            #             lf = f"{lfour:04d}"
 
-                        IC = yymmdd + pb + lf
-                        enter_IC(IC)
-                        with open("Res/ckpt.txt", "w") as checkpoint:
-                            checkpoint.write(IC)
+            #             IC = yymmdd + pb + lf
+            #             enter_IC(IC)
+            #             with open("Res/ckpt.txt", "w") as checkpoint:
+            #                 checkpoint.write(IC)
 
             for year in range(ckpt_yy, 6):  # 2000-2006
 
-                dd = f"{year:02d}"
+                yy = f"{year:02d}"
 
-                yymmdd = str(year) + mm + dd
+                yymmdd = yy + mm + dd
 
                 # next 2, labeled as PB(place of birth), numbers 17-20 not included
                 for PB in range(ckpt_pb, 60):

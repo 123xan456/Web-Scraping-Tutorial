@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.proxy import Proxy, ProxyType
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from bs4 import BeautifulSoup
@@ -8,8 +9,6 @@ import ddddocr, base64, cv2, os
 import pandas as pd
 
 info = pd.read_excel("Res/info.xlsx", index_col="ID", dtype=str)
-options = Options()
-options.headless = True
 checkpoint = open("Res/ckpt.txt", "r+")
 
 
@@ -24,9 +23,28 @@ def ocr_captcha_ddddocr(image):
 
 
 def enter_IC(IC_no):
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()), options=options
+    myProxy = "103.75.196.121:80"
+    proxy = Proxy(
+        {
+            "proxyType": ProxyType.MANUAL,
+            "httpProxy": myProxy,
+            "sslProxy": myProxy,
+            "noProxy": "",
+        }
     )
+
+    options = Options()
+    options.headless = True
+    options.proxy = proxy
+
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=options,
+    )
+
+    driver.get("https://api.ipify.org/")
+    print(driver.find_element(By.TAG_NAME, "pre").text)
+
     driver.get("https://mysprsemak.spr.gov.my/semakan/daftarPemilih")
     driver.save_screenshot("ss.png")
 
